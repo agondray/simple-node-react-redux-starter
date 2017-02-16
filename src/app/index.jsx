@@ -1,3 +1,4 @@
+import React from 'react';
 import {render} from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import Routes from './routes.jsx';
@@ -7,6 +8,7 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { Grid } from 'react-flexbox-grid/lib/index';
 
 
 let logger = createLogger();
@@ -17,6 +19,13 @@ let store = createStore(rootReducer, {}, composeEnhancers(
 
 window.store = store;
 
-render (<Provider store={store}><Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>{Routes}</Router></Provider>,document.getElementById('app'));
+const styles = {
+  grid: {
+    width: '100%',
+    height: '100vh',
+  }
+}
+
+render (<Grid style={ styles.grid }><Provider store={store}><Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>{Routes}</Router></Provider></Grid>,document.getElementById('app'));
 
 // render(<Router>{Routes}</Router>,document.getElementById('app'));

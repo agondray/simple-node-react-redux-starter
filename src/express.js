@@ -18,7 +18,7 @@ const app = Express();
 
 if (process.env.ENV === 'development') { app.use(logger('dev')); };
 
-app.use(Express.static(path.join(__dirname, '../build/index.html')));
+app.use(Express.static(path.join(__dirname, '../build/')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -26,7 +26,15 @@ app.use(helmet());
 app.use(cors());
 
 app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, '../build/index.html'))
+  // res.setHeader({'Content-Type': 'text/html'});
+  fs.readFile(path.resolve(__dirname, '../build/index.html'), (err, file) => {
+    if (err) {
+      res.sendStatus(404);
+    }
+    else {
+      res.send(file.toString());
+    }
+  })
 })
 
 app.use('/api', routes);

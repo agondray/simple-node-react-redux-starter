@@ -1,0 +1,10 @@
+.footer {
+  width: 100%;
+  min-height: 20vh;
+  background-color: black;
+}
+
+.sampleText {
+  color: #aaaaaa;
+  font-family: Helvetica;
+}
