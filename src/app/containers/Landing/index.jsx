@@ -4,6 +4,12 @@ import TextField from 'material-ui/TextField';
 
 import styles from './landing.css';
 
+const muiStyles = {
+  textfield: {
+    width: '100%',
+  }
+}
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -16,17 +22,17 @@ export default class App extends Component {
     return (
       <div className={ styles.landingDefault }>
         <Row>
-          <Col xsOffset={ 4 } xs={ 4 }>
+          <Col xsOffset={ 3 } xs={ 6 }>
             <h1>Welcome To JV's React-Redux Boilerplate</h1>
           </Col>
         </Row>
         <Row>
-          <Col xsOffset={ 3 } xs={ 4 }>
-            <TextField hintText="Hint Text"
+          <Col xsOffset={ 2 } xs={ 4 }>
+            <TextField style={ muiStyles.textfield } hintText="Hint Text"
               floatingLabelText="Floating Label Text" />
           </Col>
           <Col xs={ 4 }>
-            <TextField hintText="Hint Text"
+            <TextField style={ muiStyles.textfield } hintText="Hint Text"
               floatingLabelText="Floating Label Text" />
           </Col>
         </Row>

@@ -28,4 +28,5 @@ const styles = {
 
 render (<Grid style={ styles.grid }><Provider store={store}><Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>{Routes}</Router></Provider></Grid>,document.getElementById('app'));
 
+// use this instead if not using redux:
 // render(<Router>{Routes}</Router>,document.getElementById('app'));

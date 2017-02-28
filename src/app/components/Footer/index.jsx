@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <div className={ styles.footer }>
-        <h2 className={ styles.sampleText }>Footer...</h2>
+        <h2 className={ styles.sampleText }>Cest Magnifique</h2>
       </div>
     )
   }

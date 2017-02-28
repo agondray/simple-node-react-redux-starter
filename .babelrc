@@ -3,5 +3,20 @@
       "es2015",
       "react",
       "stage-2"
-    ] 
+    ],
+    "env": {
+      "development": {
+        "presets": ["react-hmre"],
+        "plugins": [
+          ["react-transform",
+          {
+            "transforms": [{
+              "transform": "react-transform-hmr",
+              "imports": ["react"],
+              "locals": ["module"]
+            }]
+          }]
+        ]
+      }
+    }
 }
