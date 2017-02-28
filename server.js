@@ -55,9 +55,8 @@ app.get('*', function (req, res) {
   })
 })
 
-// Do "hot-reloading" of express stuff on the server
-// Throw away cached modules and re-require next time
-// Ensure there's no important state in there!
+// Using chokidar, this portion of the code will handle 'hot-reloading' for node
+// which is similar to what happens if nodemon was used in the npm start command
 const watcher = chokidar.watch('./src/api');
 
 watcher.on('ready', function() {
@@ -69,8 +68,7 @@ watcher.on('ready', function() {
   });
 });
 
-// Do "hot-reloading" of react stuff on the server
-// Throw away the cached client modules and let them be re-required next time
+// if using server-side rendering, perform 'hot-reloading' for any react stuff on the client as well:
 compiler.plugin('done', function() {
   console.log("Clearing /src/app/ module cache from server");
   Object.keys(require.cache).forEach(function(id) {
