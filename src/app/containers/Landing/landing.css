@@ -1,6 +1,10 @@
+Col {
+  padding: 0px;
+}
+
 .landingDefault {
   width: 100%;
-  height: auto;
-  color: red;
+  height: 100%;
+  color: #FFFFFF;
   font-family: Arial;
 }

@@ -1,10 +1,18 @@
 .footer {
   width: 100%;
   min-height: 20vh;
-  background-color: black;
+  background-color: #191719;
 }
 
-.sampleText {
-  color: white;
-  font-family: Arial;
+.footerHeading {
+  color: #D5D5D6;
+}
+
+.footerList {
+  list-style-type: none;
+  color: #D5D5D6;
+}
+
+.footerLinks {
+  color: #D5D5D6;
 }

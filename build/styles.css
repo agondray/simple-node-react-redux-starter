@@ -960,16 +960,28 @@
 }.footer__footer___3isEy {
   width: 100%;
   min-height: 20vh;
-  background-color: black;
+  background-color: #191719;
 }
 
-.footer__sampleText___2C9Qr {
-  color: white;
-  font-family: Arial;
+.footer__footerHeading___1v3XM {
+  color: #D5D5D6;
 }
+
+.footer__footerList___Ep3iy {
+  list-style-type: none;
+  color: #D5D5D6;
+}
+
+.footer__footerLinks___38Mnd {
+  color: #D5D5D6;
+}
+Col {
+  padding: 0px;
+}
+
 .landing__landingDefault___cqQ0_ {
   width: 100%;
-  height: auto;
-  color: red;
+  height: 100%;
+  color: #FFFFFF;
   font-family: Arial;
 }
