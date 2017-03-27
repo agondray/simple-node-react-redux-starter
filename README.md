@@ -1,5 +1,6 @@
-# A simple starter kit using Webpack, Node+Express, and React+Redux
-======
+# A simple Webpack, Node+Express, and React+Redux boilerplate
+## *This is currently a work in progress*
+
 ## Things To Note
 * CSS hot-reloading currently doesn't work. However, hot-reloading for inline styling works fine.
 
@@ -10,6 +11,7 @@
 * Configuration to connect to MongoDb via Mongoose
 * Apply PassportJS, Redis, and JWT for login and sessions
 * Simple Front-end user Dashboard displaying the following:
+  * Ligin from landing page
   * Newsfeed from select subreddits via the Reddit API
   * Small space showing the user's profile and avatar
 * Topnav will be updated to look different when on the landing page vs the dashboard
