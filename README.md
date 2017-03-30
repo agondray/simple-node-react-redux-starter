@@ -1,8 +1,10 @@
 # A simple Webpack, Node+Express, and React+Redux boilerplate
 ## *This is currently a work in progress*
 
-## Things To Note
-* CSS hot-reloading currently doesn't work. However, hot-reloading for inline styling works fine.
+## Notes
+* CSS hot-reloading is currently buggy. A page refresh must happen before CSS changes are observed.
+* However, hot-reloading for inline styling works fine.
+* This boilerplate is using the `chokidar` module to auto-reload the server files, similar to what nodemon does for back-end updates.
 
 ## What's next?
 * Implement Redux `connect` to containers
@@ -19,6 +21,8 @@
 
 ## Commands
 1. `npm install` to install dependencies
-2. `npm run build` to build the webpack bundle
+2. `npm run build` to compile the webpack bundle into the `build` directory
 3. `npm run start` to run the development server
-4. Alternatively, you could run `npm run serve` to remove the build folder, build the webpack bundle, and start the server.
+
+## Known Bugs:
+* "hot-reloading" for the back end doesn't seem to work when editing the server file.

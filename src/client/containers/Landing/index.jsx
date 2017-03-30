@@ -3,6 +3,7 @@ import { Row, Col } from 'react-flexbox-grid/lib/index';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import * as landingActions from '../../actions/Landing';
 import styles from './landing.css';
 
 const muiStyles = {
@@ -38,6 +39,9 @@ export default class App extends Component {
 
   handleSubmit(e) {
     console.log(`submitting ${this.state.username} and ${this.state.password} to redux state...`);
+    landingActions.apiTest().then((res) => {
+      console.log(res.data);
+    });
   }
 
   handlePressEnter(e) {
@@ -53,6 +57,7 @@ export default class App extends Component {
         <Row style={{ padding: '0px', }}>
           <Col xsOffset={ 3 } xs={ 6 }>
             <h1 style={{ textAlign: 'center', }}>Welcome To JV's React-Redux Boilerplate!</h1>
+            <h2 style={{ textAlign: 'center', }}>Hello World</h2>
           </Col>
         </Row>
         <Row>

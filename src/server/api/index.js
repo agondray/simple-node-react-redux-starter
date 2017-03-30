@@ -3,8 +3,8 @@ import express from 'express';
 
 const app = express.Router();
 
-app.get('/api', (req, res) => {
-  console.log('in /api route..');
+app.get('/test', (req, res) => {
+  console.log('pinged /api route..');
   res.json({ message: 'in api root' });
 })
 
