@@ -24,5 +24,5 @@
 2. `npm run build` to compile the webpack bundle into the `build` directory
 3. `npm run start` to run the development server
 
-## Known Bugs:
+## Known Bugs/Issues:
 * "hot-reloading" for the back end doesn't seem to work when editing the server file.
