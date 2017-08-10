@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import * as landingActions from '../../actions/Landing';
-import styles from './landing.css';
+import styles from '../../stylesheets/landing.css';
 
 const muiStyles = {
   textfield: {
