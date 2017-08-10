@@ -38,14 +38,13 @@ export default class App extends Component {
   }
 
   handleSubmit(e) {
-    console.log(`submitting ${this.state.username} and ${this.state.password} to redux state...`);
+    console.log(`submitting ${this.state.username} and ${this.state.password} to redux state!`);
     landingActions.apiTest().then((res) => {
       console.log(res.data);
     });
   }
 
   handlePressEnter(e) {
-    // e.preventDefault();
     if (e.which === 13) {
       this.handleSubmit();
     }
@@ -56,8 +55,8 @@ export default class App extends Component {
       <div className={ styles.landingDefault }>
         <Row style={{ padding: '0px', }}>
           <Col xsOffset={ 3 } xs={ 6 }>
-            <h1 style={{ textAlign: 'center', }}>Welcome To JV's React-Redux Boilerplate!</h1>
-            <h2 style={{ textAlign: 'center', }}>Hello World</h2>
+            <h1 style={{ textAlign: 'center', }}>Boilerplate Landing Page</h1>
+            <h2 style={{ textAlign: 'center', }}>Foo Bar Baz HELLO WORLD!</h2>
           </Col>
         </Row>
         <Row>

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Row, Col } from 'react-flexbox-grid/lib/index';
 
-import styles from './footer.css';
+import styles from '../../stylesheets/footer.css';
 
 const tempStyles = {
   a: {

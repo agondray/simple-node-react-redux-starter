@@ -13,11 +13,12 @@
 * Configuration to connect to MongoDb via Mongoose
 * Apply PassportJS, Redis, and JWT for login and sessions
 * Simple Front-end user Dashboard displaying the following:
-  * Ligin from landing page
+  * Login from landing page
   * Newsfeed from select subreddits via the Reddit API
   * Small space showing the user's profile and avatar
 * Topnav will be updated to look different when on the landing page vs the dashboard
 * Footer can be cleaned up to display actual info and links
+* Transition from npm to Yarn for locking versions
 
 ## Commands
 1. `npm install` to install dependencies

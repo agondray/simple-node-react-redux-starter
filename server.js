@@ -4,4 +4,4 @@ require("babel-register");
 // other babel configuration, if necessary
 
 // load your app
-var app = require("./src/server/app.js");
+var app = require("./config/app.js");
