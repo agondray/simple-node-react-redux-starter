@@ -49,6 +49,7 @@ module.exports = {
           },
         ],
 
+        // **Note**
         // only use ExtractTextPlugin in prod - it doesn't support hot-reloading
         // loader: ExtractTextPlugin.extract({
         //   fallback: 'style-loader',
