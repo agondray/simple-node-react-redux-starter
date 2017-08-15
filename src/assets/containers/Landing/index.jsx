@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Row, Col } from 'react-flexbox-grid/lib/index';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
 
-import * as landingActions from '../../actions/Landing';
+import * as landingApi from '../../api/Landing';
 import styles from '../../stylesheets/landing.css';
+import { updateTestAsync } from '../../actions/main';
 
 const muiStyles = {
   textfield: {
@@ -15,7 +17,7 @@ const muiStyles = {
   floatingHint: { color: '#FFFFFF' }
 }
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +29,7 @@ export default class App extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePressEnter = this.handlePressEnter.bind(this);
+    this.updateTestState = this.updateTestState.bind(this);
   }
 
   handleUsernameChange(e) {
@@ -39,7 +42,7 @@ export default class App extends Component {
 
   handleSubmit(e) {
     console.log(`submitting ${this.state.username} and ${this.state.password} to redux state!`);
-    landingActions.apiTest().then((res) => {
+    landingApi.apiTest().then((res) => {
       console.log(res.data);
     });
   }
@@ -50,13 +53,18 @@ export default class App extends Component {
     }
   }
 
+  updateTestState() {
+    this.props.updateTestAsync();
+  }
+
   render() {
     return (
       <div className={ styles.landingDefault }>
         <Row style={{ padding: '0px', }}>
           <Col xsOffset={ 3 } xs={ 6 }>
             <h1 style={{ textAlign: 'center', }}>Boilerplate Landing Page</h1>
-            <h2 style={{ textAlign: 'center', }}>Foo Bar Baz HELLO WORLD!</h2>
+            <h2 style={{ textAlign: 'center', }}>{this.props.fun}</h2>
+            <h2 style={{ textAlign: 'center', }}>{this.props.test}</h2>
           </Col>
         </Row>
         <Row>
@@ -94,7 +102,33 @@ export default class App extends Component {
               onTouchTap={this.handleSubmit} />
           </Col>
         </Row>
+        <Row style={{ paddingTop: '1rem' }}>
+          <Col xsOffset={5} xs={2}>
+            <RaisedButton
+              label='ClickMe'
+              primary={true}
+              fullWidth={true}
+              onTouchTap={this.updateTestState} />
+          </Col>
+        </Row>
       </div>
     )
   }
 }
+
+App.propTypes = {
+  test: PropTypes.string,
+  fun: PropTypes.string,
+  updateTestAsync: PropTypes.func,
+}
+
+const state = (state) => ({
+  test: state.main.test,
+  fun: state.main.fun,
+});
+
+const dispatch = dispatch => ({
+  updateTestAsync: () => dispatch(updateTestAsync()),
+})
+
+export default connect(state, dispatch)(App);

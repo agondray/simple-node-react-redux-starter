@@ -8,14 +8,17 @@
       "development": {
         "presets": ["react-hmre"],
         "plugins": [
-          ["react-transform",
-          {
-            "transforms": [{
-              "transform": "react-transform-hmr",
-              "imports": ["react"],
-              "locals": ["module"]
-            }]
-          }]
+          "babel-plugin-transform-object-rest-spread",
+          [
+            "react-transform",
+            {
+              "transforms": [{
+                "transform": "react-transform-hmr",
+                "imports": ["react"],
+                "locals": ["module"]
+              }]
+            }
+          ]
         ]
       }
     }
