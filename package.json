@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "start": "node server.js --exec babel-node",
-    "build": "rm -rf build && webpack --config webpack/dev-commons.js --env development",
+    "build": "rm -rf build && rm -rf dist && webpack --config webpack/dev-commons.js --env development",
     "clean": "rm -rf build && rm -rf dist",
     "serve": "node dist/index.js"
   },
@@ -25,6 +25,13 @@
     "babel-register": "^6.24.0",
     "babel-runtime": "^6.22.0",
     "chokidar": "^1.6.1",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.2.1",
     "extract-text-webpack-plugin": "^2.0.0",
     "favicons-webpack-plugin": "0.0.7",
     "mocha": "^3.2.0",
