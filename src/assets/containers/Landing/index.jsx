@@ -9,11 +9,11 @@ import styles from '../../stylesheets/landing.css';
 const muiStyles = {
   textfield: {
     // width: '100%',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   },
   floatingLabel: { color: '#FFFFFF' },
-  floatingHint: { color: '#FFFFFF' }
-}
+  floatingHint: { color: '#FFFFFF' },
+};
 
 export default class App extends Component {
   constructor(props) {
@@ -22,7 +22,8 @@ export default class App extends Component {
       username: '',
       password: '',
       credentialsError: '',
-    }
+    };
+
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ export default class App extends Component {
     this.setState({ password: e.target.value });
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     console.log(`submitting ${this.state.username} and ${this.state.password} to redux state!`);
     landingActions.apiTest().then((res) => {
       console.log(res.data);
@@ -52,49 +53,52 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={ styles.landingDefault }>
-        <Row style={{ padding: '0px', }}>
-          <Col xsOffset={ 3 } xs={ 6 }>
-            <h1 style={{ textAlign: 'center', }}>Boilerplate Landing Page</h1>
-            <h2 style={{ textAlign: 'center', }}>Foo Bar Baz HELLO WORLD!</h2>
+      <div className={styles.landingDefault}>
+        <Row style={{ padding: '0px' }}>
+          <Col xsOffset={3} xs={6}>
+            <h1 style={{ textAlign: 'center' }}>Boilerplate Landing Page</h1>
+            <h2 style={{ textAlign: 'center' }}>Foo Bar Baz HELLO WORLD!</h2>
           </Col>
         </Row>
         <Row>
-          <Col xsOffset={ 3 } xs={ 2 }>
+          <Col xsOffset={3} xs={2}>
             <TextField
-              hintText=''
-              floatingLabelText='Enter Username'
+              hintText=""
+              floatingLabelText="Enter Username"
               floatingLabelStyle={muiStyles.floatingLabel}
               hintStyle={muiStyles.floatingHint}
               inputStyle={muiStyles.textfield}
               onChange={this.handleUsernameChange}
               onKeyDown={this.handlePressEnter}
-              value={this.state.username} />
+              value={this.state.username}
+            />
           </Col>
-          <Col xsOffset={ 2 } xs={ 2 }>
+          <Col xsOffset={2} xs={2}>
             <TextField
-              type='password'
-              style={ muiStyles.textfield }
-              hintText=''
-              floatingLabelText='Enter Password'
+              type="password"
+              style={muiStyles.textfield}
+              hintText=""
+              floatingLabelText="Enter Password"
               floatingLabelStyle={muiStyles.floatingLabel}
               hintStyle={muiStyles.floatingHint}
               inputStyle={muiStyles.textfield}
               onChange={this.handlePasswordChange}
               onKeyDown={this.handlePressEnter}
-              value={this.state.password} />
+              value={this.state.password}
+            />
           </Col>
         </Row>
         <Row style={{ paddingTop: '1rem' }}>
           <Col xsOffset={5} xs={2}>
             <RaisedButton
-              label='Login'
-              primary={true}
-              fullWidth={true}
-              onTouchTap={this.handleSubmit} />
+              label="Login"
+              primary
+              fullWidth
+              onTouchTap={this.handleSubmit}
+            />
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
