@@ -1,32 +1,29 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
-import Routes from './routes.jsx';
-import rootReducer from './reducers';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
+import ReduxThunk from 'redux-thunk';
 import { Grid } from 'react-flexbox-grid/lib/index';
 
+import Routes from './routes.jsx';
+import rootReducer from './reducers';
+import styles from './stylesheets/rootGrid.css'
 
 let logger = createLogger();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-let store = createStore(rootReducer, {}, composeEnhancers(
-  applyMiddleware(promiseMiddleware(), logger, thunk)
+let storeWithMiddleware = createStore(rootReducer, {/* optional preloaded state */}, composeEnhancers(
+  applyMiddleware(promiseMiddleware(), logger, ReduxThunk)
 ));
 
-window.store = store;
+window.store = storeWithMiddleware;
 
-const styles = {
-  grid: {
-    width: '100%',
-    height: '100vh',
-  }
-}
-
-render (<Grid style={ styles.grid }><Provider store={store}><Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>{Routes}</Router></Provider></Grid>,document.getElementById('app'));
-
-// use this instead if not using redux:
-// render(<Router>{Routes}</Router>,document.getElementById('app'));
+render (
+  <Grid className={styles.rootGrid}>
+    <Provider store={storeWithMiddleware}>
+      <Router history={browserHistory}>{Routes}</Router>
+    </Provider>
+  </Grid>,document.getElementById('app')
+);
