@@ -9,8 +9,8 @@ var qs = require('qs');
 
 var TEMPLATE = './src/index.html';
 var INDEX = 'index.html';
-var ENTRY_DIR = './src/assets/index.jsx';
-var OUTPUT_DIR = '../build'
+var ENTRY_PATH = './src/assets/index.jsx';
+var OUTPUT_PATH = '../build'
 
 module.exports = {
   name: 'frontend-client',
@@ -19,10 +19,10 @@ module.exports = {
   // devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    ENTRY_DIR
+    ENTRY_PATH
   ],
   output: {
-    path: path.resolve(path.join(__dirname, OUTPUT_DIR)),
+    path: path.resolve(__dirname, OUTPUT_PATH),
     publicPath: '/',
     filename: 'bundle.js',
     libraryTarget: 'umd'

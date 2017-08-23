@@ -4,13 +4,12 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 
-import * as landingApi from '../../api/Landing';
 import styles from '../../stylesheets/landing.css';
+import landingApi from '../../api/Landing';
 import { updateTestAsync } from '../../actions/main';
 
 const muiStyles = {
   textfield: {
-    // width: '100%',
     color: '#FFFFFF',
   },
   floatingLabel: { color: '#FFFFFF' },
@@ -43,9 +42,12 @@ class App extends Component {
 
   handleSubmit() {
     console.log(`submitting ${this.state.username} and ${this.state.password} to redux state!`);
-    landingApi.apiTest().then((res) => {
-      console.log(res.data);
-    });
+    landingApi.createTestUser({
+      name: this.state.username,
+      countersign: this.state.password,
+    }).then((res) => {
+      console.log('create user response: ', res.data);
+    })
   }
 
   handlePressEnter(e) {
@@ -64,7 +66,7 @@ class App extends Component {
         <Row style={{ padding: '0px' }}>
           <Col xsOffset={3} xs={6}>
             <h1 style={{ textAlign: 'center' }}>Boilerplate Landing Page</h1>
-            <h2 style={{ textAlign: 'center' }}>Foo Bar Baz HELLO WORLD!</h2>
+            <h2 style={{ textAlign: 'center' }}>Foo Bar Baz!</h2>
           </Col>
         </Row>
         <Row>
@@ -76,7 +78,6 @@ class App extends Component {
               hintStyle={muiStyles.floatingHint}
               inputStyle={muiStyles.textfield}
               onChange={this.handleUsernameChange}
-              onKeyDown={this.handlePressEnter}
               value={this.state.username}
             />
           </Col>
@@ -98,7 +99,7 @@ class App extends Component {
         <Row style={{ paddingTop: '1rem' }}>
           <Col xsOffset={5} xs={2}>
             <RaisedButton
-              label="Login"
+              label="L/R"
               primary
               fullWidth
               onTouchTap={this.handleSubmit}

@@ -1,18 +1,22 @@
 import express from 'express';
-// import custom routes here
 
-const app = express.Router();
+import { TestUsers } from '../models';
 
-app.get('/', (req, res) => {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   console.log('in home api route');
-  res.json({message: 'response from the home route'});
-})
+  res.json({ message: 'response from the home route' });
+});
 
-app.get('/test', (req, res) => {
+router.get('/test', (req, res) => {
   console.log('pinged /api route..');
   res.json({ message: 'in api root... yay!' });
-})
+});
 
-// app.use('/customRoute', customRoute);
+router.post('/create-user', (req, res) => {
+  TestUsers.createTestUser(req.body);
+  res.json({message: 'created new user...'});
+});
 
-export default app;
+export default router;
