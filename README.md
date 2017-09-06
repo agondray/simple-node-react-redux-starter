@@ -9,6 +9,9 @@
 * Uses `redux-promise-middleware` and `redux-thunk` middlewares for the redux store
 * Uses `type-to-reducer` to make it easier to handle and read the dispatch status (PENDING, REJECTED, FULFILLED)
 
+## Optional:
+Install MongoDB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-with-homebrew
+
 ## Commands
 1. `npm install` to install dependencies
 2. `npm run build` to compile the webpack bundle into the `build` directory
