@@ -1,0 +1,23 @@
+@import '../abstracts/constants.scss';
+
+.footer {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #191719;
+  color: white;
+}
+
+.footer-heading {
+  color: $footer-white;
+}
+
+.footer-list {
+  list-style-type: none;
+  color: $footer-white;
+}
+
+.footer-links {
+  color: $footer-white;
+}
