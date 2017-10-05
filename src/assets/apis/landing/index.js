@@ -17,5 +17,4 @@ export const createTestUser = data => axios({
 export default {
   apiTest,
   createTestUser,
-  logSomething,
 };
