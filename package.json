@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
-    "start-server": "nodemon server.js",
-    "start-wp": "webpack-dev-server --config ./webpack/dev-commons.js",
+    "start": "nodemon server.js",
+    "wp-start": "webpack-dev-server --config ./webpack/dev-commons.js",
     "build": "rm -rf build && rm -rf dist && webpack --config webpack/dev-commons.js --env development",
     "clean": "rm -rf build && rm -rf dist",
     "serve": "node dist/index.js"
