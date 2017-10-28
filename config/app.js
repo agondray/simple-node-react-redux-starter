@@ -1,5 +1,4 @@
 import Express from 'express';
-import chokidar from 'chokidar';
 import path from 'path';
 import fs from 'fs';
 import bodyParser from 'body-parser';
@@ -23,7 +22,6 @@ dotenv.load({ path: ENV_PATH });
 
 const INDEX_HTML_PATH = '../build/index.html';
 const DEV_STATIC_PATH = '../../build/';
-const WATCHER_DIR = './';
 const MONGO_URL = 'mongodb://localhost:27017/foo_bar_db';
 const DB_NAME = 'foo_bar_db';
 const ENV = process.env.NODE_ENV || 'development';
@@ -31,8 +29,6 @@ const PORT = process.env.PORT || 1337;
 const compiler = webpack(webpackConfig);
 const app = Express();
 
-// #here
-// if development...
 app.use(Express.static(path.join(__dirname, DEV_STATIC_PATH)));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -71,22 +67,8 @@ app.get('*', (req, res) => {
   });
 });
 
-// Using chokidar, this portion of the code will handle 'hot-reloading' for node
-// which is similar to what happens if nodemon was used in the npm start command
-const watcher = chokidar.watch(WATCHER_DIR);
-
-watcher.on('ready', () => {
-  watcher.on('all', () => {
-    console.log('chokidar - Cleared backend module cache');
-    Object.keys(require.cache).forEach((id) => {
-      if (/..[/]src[/]routes[/]/.test(id)) delete require.cache[id];
-    });
-  });
-});
-
-// perform 'hot-reloading' for any react stuff on the client as well:
 compiler.plugin('done', () => {
-  console.log('chokidar - \'hot-reloaded\' React components.');
+  console.log('clearing asset cache to \'hot-reload\' client.');
   Object.keys(require.cache).forEach((id) => {
     if (/..[/]src[/]assets[/]/.test(id)) delete require.cache[id];
   });
